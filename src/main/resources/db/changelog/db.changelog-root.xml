@@ -6,6 +6,6 @@
                       https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
     <!-- Version 1.0.0 -->
-    <!-- include file="db/changelog/v1.0.0/schema-init.xml"/ -->
+    <include file="db/changelog/v1.0.0/schema-init.xml"/>
 
 </databaseChangeLog>
