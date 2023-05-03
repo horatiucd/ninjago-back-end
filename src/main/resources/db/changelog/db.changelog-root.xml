@@ -8,5 +8,6 @@
     <!-- Version 1.0.0 -->
     <include file="db/changelog/v1.0.0/schema-init.xml"/>
     <include file="db/changelog/v1.0.0/adds_character_type.xml"/>
+    <include file="db/changelog/v1.0.0/init_character_types.xml"/>
 
 </databaseChangeLog>
