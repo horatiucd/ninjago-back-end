@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.17.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+
+    <changeSet id="1683099479273-1" author="horatiu.dan (generated)">
+        <createSequence incrementBy="1" sequenceName="character_type_seq" startValue="1"/>
+    </changeSet>
+
+    <changeSet id="1683099479273-2" author="horatiu.dan (generated)">
+        <createTable tableName="character_type">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_character_type"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="1683099479273-3" author="horatiu.dan (generated)">
+        <addColumn tableName="character">
+            <column name="type_fk" type="BIGINT"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="1683099479273-4" author="horatiu.dan (generated)">
+        <addNotNullConstraint columnName="type_fk" tableName="character"/>
+    </changeSet>
+
+    <changeSet id="1683099479273-5" author="horatiu.dan (generated)">
+        <addUniqueConstraint columnNames="name" constraintName="uc_character_type_name"
+                             tableName="character_type"/>
+    </changeSet>
+
+    <changeSet id="1683099479273-6" author="horatiu.dan (generated)">
+        <addForeignKeyConstraint baseColumnNames="type_fk" baseTableName="character"
+                                 constraintName="FK_CHARACTER_ON_TYPE_FK" referencedColumnNames="id"
+                                 referencedTableName="character_type"/>
+    </changeSet>
+
+</databaseChangeLog>

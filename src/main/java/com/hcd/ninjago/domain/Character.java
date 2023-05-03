@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
@@ -21,10 +23,12 @@ public class Character implements Serializable {
     @Column(name = "id")
     private Long id;
 
-    //TODO: add a CharacterType
-
     @Column(name = "name", nullable = false)
     private String name;
+
+    @ManyToOne
+    @JoinColumn(name = "type_fk", nullable = false)
+    private CharacterType type;
 
     @Column(name = "season", nullable = false)
     private Integer season;
@@ -50,6 +54,14 @@ public class Character implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public CharacterType getType() {
+        return type;
+    }
+
+    public void setType(CharacterType type) {
+        this.type = type;
     }
 
     public Integer getSeason() {
